@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 900px;
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* --- VIDEO THEME ELEMENTS --- */
+
+/* Hide default file input and use a custom button */
+#video-file {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Style the custom file label (the "Choose File" button) */
+.custom-file-upload {
+    display: inline-block;
+    background-color: #3498db; /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px #2980b9;
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.custom-file-upload:active {
+    box-shadow: 0 2px #2980b9;
+    transform: translateY(2px);
+}
+
+/* Style the main Generate Code button */
+#generate-btn {
+    background-color: #e74c3c; /* Striking Red/Orange */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px #c0392b;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+#generate-btn:hover {
+    background-color: #c0392b;
+}
+
+#generate-btn:active {
+    box-shadow: 0 2px #c0392b;
+    transform: translateY(3px);
+}
+
+/* --- Form Layout --- */
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px dashed #ccc; /* Subtle video-themed boundary */
+    border-radius: 10px;
+}
+
+/* Add a style to indicate which file is selected */
+#file-name-display {
+    color: #2c3e50;
+    font-style: italic;
+    min-height: 20px;
+    text-align: center;
+}
+
+/* Loading Spinner */
+.hidden {
+    display: none !important;
+}
+
+#loading {
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Code Output */
+.code-section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.code-section h3 {
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    color: #495057;
+}
+
+pre {
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    margin: 0;
+    overflow-x: auto;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="{{ url_for('static', filename='img/code to video.png') }}" type="image/png">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video to Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📹 Video to Code Generator</h1>
+        <p>Upload a screen recording (e.g., a CSS design video) to generate the corresponding HTML/CSS/JS code.</p>
+
+        <form id="upload-form" enctype="multipart/form-data">
+            
+            <label for="video-file" class="custom-file-upload">
+                Choose Video File (.mp4, .mov, etc.)
+            </label>
+            
+            <input type="file" id="video-file" name="videoFile" accept="video/*" required>
+            
+            <div id="file-name-display">No file selected.</div>
+            
+            <button type="submit" id="generate-btn">Generate Code</button>
+        </form>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing video and generating code...</p>
+        </div>
+
+        <div id="output" class="hidden">
+            <h2>✨ Generated Code Results</h2>
+            
+            <div class="code-section">
+                <h3>HTML</h3>
+                <pre><code id="html-output" class="language-html"></code></pre>
+            </div>
+            
+            <div class="code-section">
+                <h3>CSS</h3>
+                <pre><code id="css-output" class="language-css"></code></pre>
+            </div>
+            
+            <div class="code-section">
+                <h3>JavaScript</h3>
+                <pre><code id="js-output" class="language-javascript"></code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
