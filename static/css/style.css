@@ -1,159 +1,148 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f9;
-    color: #333;
     margin: 0;
     padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0b0f19;
+    color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     padding-top: 50px;
 }
 
-.container {
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 900px;
-}
-
-h1 {
-    color: #007bff;
-    text-align: center;
-}
-
-p {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #666;
-}
-
-/* --- VIDEO THEME ELEMENTS --- */
-
-/* Hide default file input and use a custom button */
-#video-file {
-    opacity: 0;
-    position: absolute;
+.screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,200,255,0.1), rgba(0,0,0,0.95));
+    backdrop-filter: blur(4px);
     z-index: -1;
-    pointer-events: none;
 }
 
-/* Style the custom file label (the "Choose File" button) */
-.custom-file-upload {
+.container {
+    width: 92%;
+    max-width: 920px;
+    padding: 40px;
+    background: rgba(20, 25, 40, 0.55);
+    border-radius: 16px;
+    border: 1px solid rgba(0,255,200,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,255,200,0.2);
+}
+
+/* Text styling */
+.title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 8px;
+    color: #00eaff;
+    text-shadow: 0px 0px 12px #00d1ff;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 25px;
+    color: #c9d6df;
+}
+
+/* Upload Card */
+.upload-card {
+    text-align: center;
+    padding: 25px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(0,255,200,0.3);
+    margin-bottom: 30px;
+}
+
+/* File Upload Button */
+.file-upload-label {
     display: inline-block;
-    background-color: #3498db; /* Blue */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 0 4px #2980b9;
-    transition: all 0.2s ease;
-    margin-bottom: 10px;
-}
-
-.custom-file-upload:active {
-    box-shadow: 0 2px #2980b9;
-    transform: translateY(2px);
-}
-
-/* Style the main Generate Code button */
-#generate-btn {
-    background-color: #e74c3c; /* Striking Red/Orange */
-    color: white;
-    border: none;
-    padding: 12px 25px;
+    padding: 12px 22px;
+    background: #111829;
+    color: #00f7ff;
+    border: 1px solid #00eaff;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    box-shadow: 0 5px #c0392b;
-    transition: all 0.2s ease;
-    margin-top: 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    transition: 0.25s;
+}
+.file-upload-label:hover {
+    background: #0e2e39;
+    box-shadow: 0 0 12px #00eaff;
+}
+.file-upload-label input {
+    display: none;
 }
 
-#generate-btn:hover {
-    background-color: #c0392b;
+/* Stylish Neon Generate Button */
+.glow-btn {
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #00ffc8, #008cff);
+    color: #021014;
+    font-size: 17px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 0 18px rgba(0,255,200,0.3);
+}
+.glow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,255,200,0.7);
 }
 
-#generate-btn:active {
-    box-shadow: 0 2px #c0392b;
-    transform: translateY(3px);
-}
-
-/* --- Form Layout --- */
-
-#upload-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding: 20px;
-    border: 2px dashed #ccc; /* Subtle video-themed boundary */
-    border-radius: 10px;
-}
-
-/* Add a style to indicate which file is selected */
-#file-name-display {
-    color: #2c3e50;
-    font-style: italic;
-    min-height: 20px;
-    text-align: center;
-}
-
-/* Loading Spinner */
-.hidden {
-    display: none !important;
-}
-
-#loading {
+/* Loading box */
+.loading-box {
     text-align: center;
     margin-top: 20px;
-    color: #007bff;
 }
 
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-top: 4px solid #007bff;
+    border: 4px solid rgba(255,255,255,0.15);
+    border-top: 4px solid #00eaff;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
+    width: 38px;
+    height: 38px;
+    margin: auto;
+    animation: spin 0.9s linear infinite;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Code output card */
+.output-card {
+    padding: 25px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(0,255,200,0.2);
+    margin-top: 25px;
 }
 
-/* Code Output */
 .code-section {
     margin-top: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
 }
 
 .code-section h3 {
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 18px;
-    color: #495057;
+    color: #00eaff;
+    margin-bottom: 8px;
+    text-shadow: 0 0 8px #00eaff;
 }
 
 pre {
-    background-color: #272822;
-    color: #f8f8f2;
+    background: #111;
+    color: #00f7ff;
     padding: 15px;
-    margin: 0;
+    border-radius: 8px;
     overflow-x: auto;
+    font-size: 14px;
+    border: 1px solid rgba(0,255,200,0.2);
 }
+
+/* Utility */
+.hidden { display: none !important; }
+
