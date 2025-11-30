@@ -2,55 +2,53 @@
 <html lang="en">
 <head>
     <link rel="icon" href="{{ url_for('static', filename='img/code to video.png') }}" type="image/png">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Video to Code Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <div class="container">
-        <h1>📹 Video to Code Generator</h1>
-        <p>Upload a screen recording (e.g., a CSS design video) to generate the corresponding HTML/CSS/JS code.</p>
 
-        <form id="upload-form" enctype="multipart/form-data">
-            
-            <label for="video-file" class="custom-file-upload">
-                Choose Video File (.mp4, .mov, etc.)
+<body>
+    <div class="screen-overlay"></div>
+
+    <div class="container">
+        <h1 class="title">🎬 Video to Code Generator</h1>
+        <p class="subtitle">Upload your screen-recorded code video and extract clean HTML/CSS/JS instantly.</p>
+
+        <form id="upload-form" enctype="multipart/form-data" class="upload-card">
+            <label class="file-upload-label">
+                <input type="file" id="video-file" name="videoFile" accept="video/*" required>
+                <span>🎥 Choose Video</span>
             </label>
-            
-            <input type="file" id="video-file" name="videoFile" accept="video/*" required>
-            
-            <div id="file-name-display">No file selected.</div>
-            
-            <button type="submit" id="generate-btn">Generate Code</button>
+            <button type="submit" id="generate-btn" class="glow-btn">⚡ Generate Code</button>
         </form>
 
-        <div id="loading" class="hidden">
+        <div id="loading" class="hidden loading-box">
             <div class="spinner"></div>
-            <p>Analyzing video and generating code...</p>
+            <p>Analyzing video... Please wait.</p>
         </div>
 
-        <div id="output" class="hidden">
-            <h2>✨ Generated Code Results</h2>
-            
+        <div id="output" class="hidden output-card">
+            <h2>✨ Generated Code</h2>
+
             <div class="code-section">
                 <h3>HTML</h3>
-                <pre><code id="html-output" class="language-html"></code></pre>
+                <pre><code id="html-output"></code></pre>
             </div>
-            
+
             <div class="code-section">
                 <h3>CSS</h3>
-                <pre><code id="css-output" class="language-css"></code></pre>
+                <pre><code id="css-output"></code></pre>
             </div>
-            
+
             <div class="code-section">
                 <h3>JavaScript</h3>
-                <pre><code id="js-output" class="language-javascript"></code></pre>
+                <pre><code id="js-output"></code></pre>
             </div>
         </div>
     </div>
-    
+
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
